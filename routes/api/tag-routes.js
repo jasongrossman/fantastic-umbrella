@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'tag_name',
-      [sequelize.literal('(SELECT (*) FROM tag WHERE tag_id = product.tag_id)'), 'tagged_products']
+      //[sequelize.literal('(SELECT (*) FROM tag WHERE tag_id = product.tag_id)'), 'tagged_products']
     ],
     // be sure to include its associated Product data
     include: [
@@ -71,7 +71,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
-    tag_name: req.body.category_name
+    tag_name: req.body.tag_name
   })
     .then(dbTagData => res.json(dbTagData))
     .catch(err => {
@@ -84,7 +84,7 @@ router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(
     {
-      tag_name: req.body.Tag_name
+      tag_name: req.body.tag_name
     },
     {
       where: {
