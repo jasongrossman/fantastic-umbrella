@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
   Tag.findAll({
     attributes: [
       'id',
-      'tag_name',
-      //[sequelize.literal('(SELECT (*) FROM tag WHERE tag_id = product.tag_id)'), 'tagged_products']
+      'tag_name'
     ],
     // be sure to include its associated Product data
     include: [
